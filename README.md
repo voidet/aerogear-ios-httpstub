@@ -45,7 +45,7 @@ To use AGURLSessionStubs to test your iOS applications, follow these 3 easy step
 ```
 git clone git@github.com:aerogear/aerogear-ios-httpstub.git
 ```
-You can alternatively add the project as github submodule to ease configuration step for other users. 
+You can alternatively add the project as github submodule to ease configuration for other users. 
 
 ### 2. Add `AGURLSessionStubs.xcodeproj` to your test target
 
