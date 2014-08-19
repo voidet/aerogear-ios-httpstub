@@ -1,4 +1,4 @@
-# AGURLSessionStubs
+# aerogear-ios-httpstub
 
 A small library inspired by [OHHTTPStubs](https://github.com/AliSoftware/OHHTTPStubs) to stub your network requests written in Swift.
 
