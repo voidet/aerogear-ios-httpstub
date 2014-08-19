@@ -43,13 +43,13 @@ public class StubsManager {
     public class func stubRequestsPassingTest(testBlock: StubTestBlock, withStubResponse responseBlock: StubResponseBlock) -> StubDescriptor {
         let stubDesc = StubDescriptor(testBlock: testBlock, responseBlock: responseBlock)
         
-        StubsManager.sharedManager.stubDescriptors += stubDesc
+        StubsManager.sharedManager.stubDescriptors.append(stubDesc)
         
         return stubDesc
     }
     
     public class func addStub(stubDescr: StubDescriptor) {
-        StubsManager.sharedManager.stubDescriptors += stubDescr
+        StubsManager.sharedManager.stubDescriptors.append(stubDescr)
     }
     
     public class func removeStub(stubDescr: StubDescriptor) {
@@ -92,7 +92,7 @@ public class StubDescriptor: Equatable {
     }
 }
 
-@infix public func ==(lhs: StubDescriptor, rhs: StubDescriptor) -> Bool {
+public func ==(lhs: StubDescriptor, rhs: StubDescriptor) -> Bool {
     // identify check
     return lhs === rhs
 }
@@ -110,6 +110,11 @@ private class Utils {
 }
 
 extension NSURLSessionConfiguration {
+
+    class func defaultSessionConfiguration() -> NSURLSessionConfiguration! {
+            return NSURLSessionConfiguration.ephemeralSessionConfiguration()
+    }
+    
     
     class func swizzle_defaultSessionConfiguration() -> NSURLSessionConfiguration! {
         // as we've swap method, calling swizzled one here will call original one
@@ -118,7 +123,7 @@ extension NSURLSessionConfiguration {
         var result = [AnyObject]()
         
         for proto in config.protocolClasses {
-            result += proto
+            result.append(proto)
         }
 
         // add our stub
@@ -134,7 +139,7 @@ extension NSURLSessionConfiguration {
         var result = [AnyObject]()
         
         for proto in config.protocolClasses {
-            result += proto
+            result.append(proto)
         }
 
         // add our stub
