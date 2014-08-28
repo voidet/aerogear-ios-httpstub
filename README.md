@@ -59,7 +59,7 @@ navigator, grouped with your tests.
 
 ![](AGURLSessionStubs_usage.png)
 
-See project [aerogear-ios-http](https://github.com/corinnekrych/aerogear-ios-http.git) as an example using it.
+See project [aerogear-ios-http](https://github.com/aerogear/aerogear-ios-http) as an example using it.
 
 ### 3. Start using it!
 
