@@ -22,28 +22,28 @@ class StubURLProtocol: NSURLProtocol {
     var stopped = false
     let stubDescr: StubDescriptor
 
-    override class func canInitWithRequest(request: NSURLRequest!) -> Bool {
+    override class func canInitWithRequest(request: NSURLRequest) -> Bool {
         return StubsManager.sharedManager.firstStubPassingTestForRequest(request) != nil
     }
     
-    override class func canInitWithTask(task: NSURLSessionTask!) -> Bool {
+    override class func canInitWithTask(task: NSURLSessionTask) -> Bool {
         return StubsManager.sharedManager.firstStubPassingTestForRequest(task.currentRequest) != nil
     }
 
-    override init(request: NSURLRequest!, cachedResponse: NSCachedURLResponse!, client: NSURLProtocolClient!) {
+    override init(request: NSURLRequest, cachedResponse: NSCachedURLResponse!, client: NSURLProtocolClient!) {
         stubDescr = StubsManager.sharedManager.firstStubPassingTestForRequest(request)!
         
         // ensure no cache response is used
         super.init(request: request, cachedResponse: nil, client: client)
     }
 
-    override class func canonicalRequestForRequest(request: NSURLRequest!) -> NSURLRequest! {
+    override class func canonicalRequestForRequest(request: NSURLRequest) -> NSURLRequest {
         return request
     }
     
     override func startLoading() {
         let request: NSURLRequest = self.request
-        let client: NSURLProtocolClient = self.client;
+        let client: NSURLProtocolClient = self.client!;
 
         let responseStub: StubResponse = self.stubDescr.responseBlock(request)
 
@@ -61,7 +61,7 @@ class StubURLProtocol: NSURLProtocol {
         }
         
         if (responseStub.statusCode >= 300 && responseStub.statusCode < 400) && redirectLocationURL != nil {
-            let redirectRequest = NSURLRequest(URL: redirectLocationURL)
+            let redirectRequest = NSURLRequest(URL: redirectLocationURL!)
             
             execute_after(responseStub.requestTime) {
                 if (!self.stopped) {
