@@ -122,7 +122,7 @@ extension NSURLSessionConfiguration {
         
         var result = [AnyObject]()
         
-        for proto in config.protocolClasses {
+        for proto in config.protocolClasses! {
             result.append(proto)
         }
 
@@ -138,7 +138,7 @@ extension NSURLSessionConfiguration {
         
         var result = [AnyObject]()
         
-        for proto in config.protocolClasses {
+        for proto in config.protocolClasses! {
             result.append(proto)
         }
 
