@@ -38,6 +38,10 @@ public class StubsManager {
         Utils.swizzleFromSelector("defaultSessionConfiguration", toSelector: "swizzle_defaultSessionConfiguration", forClass: NSURLSessionConfiguration.classForCoder())
         
         Utils.swizzleFromSelector("ephemeralSessionConfiguration", toSelector: "swizzle_ephemeralSessionConfiguration", forClass: NSURLSessionConfiguration.classForCoder())
+    
+        // it will also allow 'NSURLSession.sharedSession()' to work for clients bypassing  intiliazation with
+        // a NSURLSessionConfiguration object (either 'default' or 'ephemeral')
+        NSURLProtocol.registerClass(StubURLProtocol.classForCoder());
     }
     
     public class func stubRequestsPassingTest(testBlock: StubTestBlock, withStubResponse responseBlock: StubResponseBlock) -> StubDescriptor {
