@@ -47,7 +47,7 @@ class StubURLProtocol: NSURLProtocol {
 
         let responseStub: StubResponse = self.stubDescr.responseBlock(request)
 
-        let urlResponse = NSHTTPURLResponse(URL: request.URL, statusCode: responseStub.statusCode, HTTPVersion: "HTTP/1.1", headerFields: responseStub.headers)
+        let urlResponse = NSHTTPURLResponse(URL: request.URL, statusCode: responseStub.statusCode, HTTPVersion: "HTTP/1.1", headerFields: responseStub.headers)!
         
         // TODO
         // cookies handling
@@ -57,7 +57,7 @@ class StubURLProtocol: NSURLProtocol {
         var redirectLocationURL: NSURL? = nil
         
         if let redirectLocation = responseStub.headers["Location"] {
-            redirectLocationURL = NSURL.URLWithString(redirectLocation)
+            redirectLocationURL = NSURL(string: redirectLocation)!
         }
         
         if (responseStub.statusCode >= 300 && responseStub.statusCode < 400) && redirectLocationURL != nil {

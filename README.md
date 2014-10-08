@@ -2,7 +2,7 @@
 
 A small library inspired by [OHHTTPStubs](https://github.com/AliSoftware/OHHTTPStubs) to stub your network requests written in Swift.
 
-> This module is beta software, it currently supports Xcode 6 Beta 6.
+> This module is beta software, it currently supports Xcode 6.1
 
 ## Example Usage
 

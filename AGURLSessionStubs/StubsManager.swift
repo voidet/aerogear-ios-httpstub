@@ -106,8 +106,8 @@ private class Utils {
     
     private class func swizzleFromSelector(selector: String!, toSelector: String!, forClass:AnyClass!) {
         
-        var originalMethod = class_getClassMethod(forClass, Selector.convertFromStringLiteral(selector))
-        var swizzledMethod = class_getClassMethod(forClass, Selector.convertFromStringLiteral(toSelector))
+        var originalMethod = class_getClassMethod(forClass, Selector(stringLiteral: selector))
+        var swizzledMethod = class_getClassMethod(forClass, Selector(stringLiteral: toSelector))
         
         method_exchangeImplementations(originalMethod, swizzledMethod)
     }
