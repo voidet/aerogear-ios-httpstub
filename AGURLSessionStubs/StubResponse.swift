@@ -25,11 +25,20 @@ public class StubResponse {
     let dataSize: Int
     let requestTime: NSTimeInterval  = 0.0
     let responseTime: NSTimeInterval = 0.0
-    
-    public init(data: NSData, statusCode: Int, headers: Dictionary<String, String>) {
-        self.data = data
-        self.statusCode = statusCode
-        self.headers = headers
-        self.dataSize = data.length
-    }
+	
+		public init(data: NSData, statusCode: Int, headers: Dictionary<String, String>) {
+			self.data = data
+			self.statusCode = statusCode
+			self.headers = headers
+			self.dataSize = data.length
+		}
+	
+		convenience public init(dataFromFile: NSString, statusCode: Int, headers: Dictionary<String, String>) {
+			var data:NSData = NSData()
+			if let path = NSBundle(forClass: StubResponse.self).pathForResource(dataFromFile.stringByDeletingPathExtension, ofType: dataFromFile.pathExtension) {
+				data = NSData(contentsOfFile:path, options:NSDataReadingOptions.DataReadingMappedIfSafe, error: nil) ?? NSData()
+			}
+			self.init(data: data, statusCode: statusCode, headers: headers)
+		}
+
 }

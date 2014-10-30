@@ -141,4 +141,38 @@ class AGURLSessionStubsTests: XCTestCase {
         
         waitForExpectationsWithTimeout(10, handler: nil)
     }
+    
+    func testStubWithLocalJsonFile() {
+        
+        StubsManager.stubRequestsPassingTest({ (request: NSURLRequest!) -> Bool in
+            return true
+        }, withStubResponse:( { (request: NSURLRequest!) -> StubResponse in
+            return StubResponse(dataFromFile: "stub.json", statusCode: 200, headers: ["Content-Type" : "text/json"])
+        }))
+        
+        // async test expectation
+        let registrationExpectation = expectationWithDescription("testStubWithNSURLSessionDefaultConfiguration");
+        
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://server.com")!)
+        
+        let config = NSURLSessionConfiguration.defaultSessionConfiguration()
+        let session = NSURLSession(configuration: config)
+        
+        let task = session.dataTaskWithRequest(request) {(data, response, error) in
+            XCTAssertNil(error, "unexpected error")
+            XCTAssertNotNil(data, "response should contain data")
+            
+            let testData = NSString(data: data, encoding:NSUTF8StringEncoding)
+            let localFile = NSBundle(forClass: self.dynamicType).pathForResource("stub", ofType: "json")
+            let localData = NSString(contentsOfFile: localFile!, encoding: NSUTF8StringEncoding, error: nil)
+            
+            XCTAssertTrue(testData == localData, "Local JSON file does not match stubbed data")
+            
+            registrationExpectation.fulfill()
+        }
+        
+        task.resume()
+        
+        waitForExpectationsWithTimeout(10, handler: nil)
+    }
 }
