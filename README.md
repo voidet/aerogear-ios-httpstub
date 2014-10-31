@@ -66,4 +66,13 @@ See project [aerogear-ios-http](https://github.com/aerogear/aerogear-ios-http) a
 If you run into any problems, please [file an issue](http://issues.jboss.org/browse/AEROGEAR) and join our [mailing list](https://lists.jboss.org/mailman/listinfo/aerogear-dev)
 
 
+## Additional Usage Notes
 
+### Load stub from a local file (JSON, XML, etc)
+```swift
+StubsManager.stubRequestsPassingTest({ (request: NSURLRequest!) -> Bool in
+	return true
+}, withStubResponse:( { (request: NSURLRequest!) -> StubResponse in
+	return StubResponse(dataFromFile: "defaults.json", statusCode: 200, headers: ["Content-Type" : "text/json"])
+}))
+```
