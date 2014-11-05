@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33DD8AE91A0AEFEA00A460F3 /* stub.json in Resources */ = {isa = PBXBuildFile; fileRef = 33DD8AE81A0AEFEA00A460F3 /* stub.json */; };
+		33DD8AEA1A0AEFF100A460F3 /* stub.json in Resources */ = {isa = PBXBuildFile; fileRef = 33DD8AE81A0AEFEA00A460F3 /* stub.json */; };
 		6F3C40A7197BCCD80072D66A /* AGURLSessionStubs.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F3C40A6197BCCD80072D66A /* AGURLSessionStubs.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6F3C40AD197BCCD80072D66A /* AGURLSessionStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3C40A1197BCCD80072D66A /* AGURLSessionStubs.framework */; };
 		6F3C40B4197BCCD80072D66A /* AGURLSessionStubsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3C40B3197BCCD80072D66A /* AGURLSessionStubsTests.swift */; };
@@ -40,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		33DD8AE81A0AEFEA00A460F3 /* stub.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stub.json; sourceTree = "<group>"; };
 		6F3C40A1197BCCD80072D66A /* AGURLSessionStubs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AGURLSessionStubs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F3C40A5197BCCD80072D66A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F3C40A6197BCCD80072D66A /* AGURLSessionStubs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AGURLSessionStubs.h; sourceTree = "<group>"; };
@@ -120,6 +123,7 @@
 		6F3C40B1197BCCD80072D66A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				33DD8AE81A0AEFEA00A460F3 /* stub.json */,
 				6F3C40B2197BCCD80072D66A /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -218,6 +222,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33DD8AEA1A0AEFF100A460F3 /* stub.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +230,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33DD8AE91A0AEFEA00A460F3 /* stub.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
